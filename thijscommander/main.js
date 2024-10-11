@@ -51,7 +51,6 @@ async function midiReady(midi) {
         console.log(midiOut[index].sysexEnabled)
         if (midiOut[index].manufacturer == "GUUUUS") {
             outputdevice = index;
-            connected = true;
             usermesg("found device");
 
         }
@@ -63,7 +62,10 @@ async function midiReady(midi) {
     } else {
         midiOut[outputdevice].open();
         sleep(200).then(() => {
-            midiOut[outputdevice].send(msg);
+            if(connected == false)
+{            midiOut[outputdevice].send(msg);
+            connected = true;}
+
         });
     }
     console.log(outputdevice);
