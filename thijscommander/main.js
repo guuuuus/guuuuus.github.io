@@ -5,7 +5,8 @@ let dataarr = [150];
 let dev;
 let count = 10;
 let connected = false;
-
+const msg = [0xF0, 0x7E, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7];
+    
 
 function onload() {
 
@@ -28,12 +29,11 @@ function connectMIDI() {
 
 async function midiReady(midi) {
     // Also react to device changes.
-    // midi.addEventListener('statechange', (event) => initDevices(event.target));
+    midi.addEventListener('statechange', (event) => disconect(event.target));
     midiIn = [];
     midiOut = [];
     console.log(midi);
     console.log(midi.sysexEnabled);
-    msg = [0xF0, 0x7E, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7];
 
     // // MIDI devices that send you data.
     // const inputs = midi.inputs.values();
@@ -84,7 +84,8 @@ async function sendMIDI() {
     splitdata.push(0xf7);
     // console.log(splitdata);
     if (connected) {
-        midiOut[outputdevice].send(splitdata);
+        midiOut[outputdevice].send(msg);
+        sleep(200).then(() =>midiOut[outputdevice].send(splitdata));
         usermesg("send data, check device")
     }
     else{
@@ -242,4 +243,9 @@ function arrayoffset(dest, source, offset) {
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function ondisconnect(x){
+    console.log(x);
+    connected = false;
 }
