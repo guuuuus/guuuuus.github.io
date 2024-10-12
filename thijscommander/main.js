@@ -6,10 +6,13 @@ let dev;
 let count = 10;
 let connected = false;
 const msg = [0xF0, 0x7E, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7];
-    
+onload();
 
 function onload() {
-
+    if (!navigator.requestMIDIAccess) {
+        alert("MIDI is not enabled in this browser, please use Chrome, Chromium, Opera or Edge on desktop.");
+        return false;
+    }
 }
 function rotaryact() {
     return 0;
@@ -62,9 +65,10 @@ async function midiReady(midi) {
     } else {
         midiOut[outputdevice].open();
         sleep(200).then(() => {
-            if(connected == false)
-{            midiOut[outputdevice].send(msg);
-            connected = true;}
+            if (connected == false) {
+                midiOut[outputdevice].send(msg);
+                connected = true;
+            }
 
         });
     }
@@ -85,20 +89,13 @@ async function sendMIDI() {
     // console.log(splitdata);
     if (connected) {
         midiOut[outputdevice].send(msg);
-        sleep(200).then(() =>midiOut[outputdevice].send(splitdata));
+        sleep(200).then(() => midiOut[outputdevice].send(splitdata));
         usermesg("send data, check device")
     }
-    else{
+    else {
         usermesg("no data send")
 
     }
-    // console.log(count);
-    // count++;
-    // midiOut[outputdevice].send(0xF0, 0x7E, 0x7F, 0x06, 0x01, 0xF7);
-
-    // await device.open();
-    // device.claimInterface(1);
-
 }
 function usermesg(msg) {
     let current = document.getElementById("message").innerHTML;
@@ -245,7 +242,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function ondisconnect(x){
+function ondisconnect(x) {
     console.log(x);
     connected = false;
 }
