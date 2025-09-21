@@ -122,6 +122,8 @@ async function sendMIDI() {
 
     splitdata.push(0xf7);
     // console.log(splitdata);
+    if (!connected)
+        connectMIDI();
     if (connected) {
         midiOut[outputdevice].send(msg);
         sleep(200).then(() => midiOut[outputdevice].send(splitdata));
@@ -283,4 +285,7 @@ function disconect(x) {
 function ondisconnect(x) {
     console.log(x);
     connected = false;
+    x = 0;
+    sleep(200);
+    connectMIDI();
 }
