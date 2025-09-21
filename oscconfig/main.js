@@ -39,11 +39,11 @@ function setVisible(devicetype) {
     devtype = devicetype;
     let visstate = "";
     let title = "THIJSCommander-Pro-2000-Preset-Configurator";
-    bg = "bg.png"
+    bg = 'linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("bg.png");'
     if (devicetype = "harmen") {
         visstate = "none;";
         title = "Harmen's knopje trigger unit 2000-pro";
-        bg = "harbg.png"
+        bg = 'linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("harbg.png");'
     }
     document.getElementById("button5tr").style.display = visstate;
     document.getElementById("button6tr").style.display = visstate;
@@ -54,7 +54,7 @@ function setVisible(devicetype) {
 
 
     // document.getElementById("title").con = title;
-    document.body.style.backgroundImage = bg;
+    document.body.style.background = bg;
 }
 
 async function midiReady(midi) {
