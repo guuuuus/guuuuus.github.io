@@ -14,6 +14,7 @@ function onload() {
         alert("MIDI is not enabled in this browser, please use firefox, Chrome, Chromium, Opera or Edge on desktop.");
         return false;
     }
+    console.log(window.location);
 }
 function rotaryact() {
     return 0;
@@ -32,17 +33,17 @@ function connectMIDI() {
 }
 
 function setVisible(devicetype) {
-    let visstate = "table-row";
+    let visstate = "";
 
     if (devicetype = "harmen") {
-        visstate = "display: none;";
+        visstate = "none;";
     }
-    document.getElementById("button5tr").style = visstate;
-    document.getElementById("button6tr").style = visstate;
-    document.getElementById("rotarytr").style = visstate;
-    document.getElementById("rotaryactiontr").style = visstate;
-    document.getElementById("rotaryactionvalstr").style = visstate;
-    document.getElementById("ledbrightnesstr").style = visstate;
+    document.getElementById("button5tr").style.display = visstate;
+    document.getElementById("button6tr").style.display = visstate;
+    document.getElementById("rotarytr").style.display = visstate;
+    document.getElementById("rotaryactiontr").style.display = visstate;
+    document.getElementById("rotaryactionvalstr").style.display = visstate;
+    document.getElementById("ledbrightnesstr").style.display = visstate;
 
 }
 
