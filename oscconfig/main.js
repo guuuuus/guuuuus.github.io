@@ -105,6 +105,10 @@ async function midiReady(midi) {
             if (connected == false) {
                 midiOut[outputdevice].send(msg);
                 connected = true;
+                usermesg("connected");
+                document.getElementById("setpreset").disabled = false;
+                document.getElementById("connect").disabled = true;
+
             }
 
         });
@@ -288,7 +292,11 @@ function disconect(x) {
 function ondisconnect(x) {
     console.log(x);
     connected = false;
-    x = 0;
+    // x = 0;
+    // usermesg("disconnected");
+    document.getElementById("setpreset").disabled = true;
+    document.getElementById("connect").disabled = false;
+
     // sleep(200);
     // connectMIDI();
 }
