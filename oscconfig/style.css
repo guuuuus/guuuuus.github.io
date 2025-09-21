@@ -11,8 +11,9 @@
 body {
     margin-top: 0;
     margin-left: 20px;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1)), url("bg.png");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
     background-size: cover;
+    background-image: none;
 }
 
 h1 {

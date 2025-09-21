@@ -14,7 +14,7 @@ function onload() {
         alert("MIDI is not enabled in this browser, please use firefox, Chrome, Chromium, Opera or Edge on desktop.");
         return false;
     }
-    console.log(window.location.h);
+    console.log(window.location);
 }
 function rotaryact() {
     return 0;
@@ -33,10 +33,14 @@ function connectMIDI() {
 }
 
 function setVisible(devicetype) {
+    devtype = devicetype;
     let visstate = "";
-
+    let title = "THIJSCommander-Pro-2000-Preset-Configurator";
+    bg = "bg.png"
     if (devicetype = "harmen") {
         visstate = "none;";
+        title = "Harmen's knopje trigger unit 2000-pro";
+        bg = "harbg.png"
     }
     document.getElementById("button5tr").style.display = visstate;
     document.getElementById("button6tr").style.display = visstate;
@@ -45,6 +49,9 @@ function setVisible(devicetype) {
     document.getElementById("rotaryactionvalstr").style.display = visstate;
     document.getElementById("ledbrightnesstr").style.display = visstate;
 
+
+    document.getElementById("title").con = title;
+    document.body.style.backgroundImage = bg;
 }
 
 async function midiReady(midi) {
