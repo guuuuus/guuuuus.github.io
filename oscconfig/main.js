@@ -53,7 +53,7 @@ function setVisible(devicetype) {
     document.getElementById("ledbrightnesstr").style.display = visstate;
 
 
-    document.getElementById("title").con = title;
+    // document.getElementById("title").con = title;
     document.body.style.backgroundImage = bg;
 }
 
