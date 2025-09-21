@@ -5,12 +5,13 @@ let dataarr = [150];
 let dev;
 let count = 10;
 let connected = false;
+let devtype = "thijscomander"
 const msg = [0xF0, 0x7E, 0x55, 0x55, 0x55, 0x55, 0x55, 0xF7];
 onload();
 
 function onload() {
     if (!navigator.requestMIDIAccess) {
-        alert("MIDI is not enabled in this browser, please use Chrome, Chromium, Opera or Edge on desktop.");
+        alert("MIDI is not enabled in this browser, please use firefox, Chrome, Chromium, Opera or Edge on desktop.");
         return false;
     }
 }
@@ -28,6 +29,15 @@ function connectMIDI() {
         .then(
             (midi) => midiReady(midi),
             (err) => console.log('Something went wrong', err));
+}
+
+function setVisible(devicetype) {
+    let visstate = "visible";
+    if (devicetype = "harmen")
+        visstate = "hidden";
+    document.getElementById("button5tr").style.visibility = visstate;
+    document.getElementById("button6tr").style.visibility = visstate;
+
 }
 
 async function midiReady(midi) {
@@ -50,12 +60,16 @@ async function midiReady(midi) {
         midiOut.push(output.value);
     }
     for (let index = 0; index < midiOut.length; index++) {
-        console.log(midiOut[index])
-        console.log(midiOut[index].sysexEnabled)
+        console.log(midiOut[index]);
+        console.log(midiOut[index].sysexEnabled);
         var devname = midiOut[index].name;
-        if ((midiOut[index].manufacturer == "GUUUUS") || (devname.indexOf("Harmens") >= 0)) {
+        if ((midiOut[index].manufacturer == "GUUUUS") || (devname.indexOf("Harmens") >= 0) || d(evname.indexOf("Thijs") >= 0)) {
             outputdevice = index;
+            if (devname.indexOf("Harmens") >= 0)
+                devtype = "harmen";
             usermesg("found device");
+            setVisible(devtype);
+            break;
 
         }
 
