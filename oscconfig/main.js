@@ -34,6 +34,8 @@ function connectMIDI() {
         .then(
             (midi) => midiReady(midi),
             (err) => console.log('Something went wrong', err));
+    document.getElementById("message").innerHTML = '';
+
 }
 
 function setVisible(devicetype) {
@@ -128,6 +130,7 @@ async function sendMIDI() {
         midiOut[outputdevice].send(msg);
         sleep(200).then(() => midiOut[outputdevice].send(splitdata));
         usermesg("send data, check device")
+        usermesg("Device should blink and reboot soon")
     }
     else {
         usermesg("no data send")
