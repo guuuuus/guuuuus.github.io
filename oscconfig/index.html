@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <title>ThijsCommander custom preset configurator</title>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="title">
+            <h2>
+                THIJSCommander-Pro-2000-Preset-Configurator
+            </h2>
+        </div>
+        <div class="space"></div>
+        <div class="chapters">
+            <div class="chapter">
+                <h1 onclick="togleVisable('networktable')">Network</h1>
+                <div id="networktable" class="chaptercontent">
+                    <table>
+                        <tr>
+                            <th>DHCP
+                            </th>
+                            <td>
+                                <input id="dhcp" type="checkbox" onchange="setdhcp();" />
+                            </td>
+                            <td scope="row" colspan="3">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Device ip
+                            </th>
+
+                            <td>
+                                <input id="localip1" type="number" min="0" max="255" value="192" />
+                            </td>
+                            <td>
+                                <input id="localip2" type="number" min="0" max="255" value="168" />
+                            </td>
+                            <td>
+                                <input id="localip3" type="number" min="0" max="255" value="1" />
+                            </td>
+                            <td>
+                                <input id="localip4" type="number" min="0" max="255" value="11" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Netmask
+                            </th>
+
+                            <td>
+                                <input id="netmask1" type="number" min="0" max="255" value="255" />
+                            </td>
+                            <td>
+                                <input id="netmask2" type="number" min="0" max="255" value="255" />
+                            </td>
+                            <td>
+                                <input id="netmask3" type="number" min="0" max="255" value="255" />
+                            </td>
+                            <td>
+                                <input id="netmask4" type="number" min="0" max="255" value="0" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>OSC-target
+                            </th>
+                            <td>
+                                <input id="targetip1" type="number" min="0" max="255" value="192" />
+                            </td>
+                            <td>
+                                <input id="targetip2" type="number" min="0" max="255" value="168" />
+                            </td>
+                            <td>
+                                <input id="targetip3" type="number" min="0" max="255" value="1" />
+                            </td>
+                            <td>
+                                <input id="targetip4" type="number" min="0" max="255" value="255" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>TX-port
+                            </th>
+                            <td>
+                                <input class="inputshort" id="targetport" type="number" min="0" max="65535"
+                                    value="53000" />
+                            </td>
+                            <th>RX-port
+                            </th>
+                            <td>
+                                <input class="inputshort" id="receiveport" type="number" min="0" max="65535"
+                                    value="53001" />
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h1 onclick="togleVisable('oscpath')">OSC paths & types</h1>
+                <div id="oscpath" class="chaptercontent">
+                    <table>
+                        <tr id="rotarytr">
+                            <th>Rotary
+                            </th>
+                            <td>
+                                <input class="textinput" id="rotarypath" type="text" maxlength="20" value="/rotary"
+                                    pattern="[^-,]+" />
+                            </td>
+                            <td>
+                                <form id="rotarytype">
+                                    <input type="radio" name="rotarytype" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="rotarytype" value="3" id="osctypefloat">float
+                                    <input type="radio" name="rotarytype" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Button 1
+                            </th>
+
+                            <td>
+                                <input class="textinput" id="button1path" type="text" maxlength="20" value="/button1" />
+                            </td>
+                            <td>
+                                <form id="button1type">
+                                    <input type="radio" name="button1type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button1type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button1type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Button 2
+                            </th>
+                            <td>
+                                <input id="button2path" type="text" maxlength="20" value="/button2" />
+                            </td>
+                            <td>
+                                <form id="button2type">
+                                    <input type="radio" name="button2type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button2type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button2type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Button 3
+                            </th>
+                            <td>
+                                <input id="button3path" type="text" maxlength="20" value="/button3" />
+                            </td>
+                            <td>
+                                <form id="button3type">
+                                    <input type="radio" name="button3type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button3type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button3type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Button 4
+                            </th>
+
+                            <td>
+                                <input id="button4path" type="text" maxlength="20" value="/button4" />
+                            </td>
+                            <td>
+                                <form id="button4type">
+                                    <input type="radio" name="button4type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button4type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button4type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="button5tr">
+                            <th>Button 5
+                            </th>
+
+                            <td>
+                                <input id="button5path" type="text" maxlength="20" value="/button5" />
+                            </td>
+                            <td>
+                                <form id="button5type">
+                                    <input type="radio" name="button5type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button5type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button5type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="button6tr">
+                            <th>Button 6
+                            </th>
+
+                            <td>
+                                <input id="button6path" type="text" maxlength="20" value="/button6" />
+                            </td>
+                            <td>
+                                <form id="button6type">
+                                    <input type="radio" name="button6type" value="2" id="osctypeint" checked="true">Int
+                                    <input type="radio" name="button6type" value="3" id="osctypefloat">float
+                                    <input type="radio" name="button6type" value="0" id="osctypenone">none
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h1 onclick="togleVisable('miditable')">MIDI</h1>
+                <div id="miditable" class="chaptercontent">
+                    <table>
+                        <tr>
+                            <th>Channel
+                            </th>
+                            <td>
+                                <input id="midichannel" type="number" min="1" max="16" value="1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Offset
+                            </th>
+                            <td>
+                                <input id="midioffset" type="number" min="0" max="128" value="60" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Command type
+                            </th>
+                            <td scope="row" colspan="3">
+                                <form id="midicommand">
+                                    <input type="radio" value="0" name="midicommand" id="midinotes" checked="true">Notes
+                                    <input type="radio" value="1" name="midicommand" id="midicc">CC
+
+                                </form>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chapter">
+                <h1 onclick="togleVisable('brightnesstable')">Buttons, rotary & brightness</h1>
+                <div id="brightnesstable" class="chaptercontent">
+                    <table>
+                        <tr>
+                            <th>
+                                Button action
+
+                            </th>
+                            <td scope="row" colspan="3">
+                                <form id="buttonaction">
+                                    <input type="radio" name="buttonaction" value="0" id="osctypeint"
+                                        checked="true">Push
+                                    <input type="radio" name="buttonaction" value="1" id="osctypefloat">Push & Release
+                                    <input type="radio" name="buttonaction" value="2" id="osctypenone">Toggle
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="rotaryactiontr">
+                            <th>Rotary action</th>
+                            <td scope="row" colspan="3">
+                                <form id="rotaryaction">
+                                    <input type="radio" name="rotaryaction" value="1" id="osctypefloat"
+                                        checked="true">Push
+                                    <input type="radio" name="rotaryaction" value="2" id="osctypenone">Rotation
+                                    <input type="radio" name="rotaryaction" value="0" id="osctypeint">None
+
+                                </form>
+                            </td>
+                        </tr>
+                        <tr id="rotaryactionvalstr">
+                            <th>Rotary values</th>
+                            <td scope="row" colspan="3">min:<input id="rotarymin" type="number" min="0" max="255"
+                                    value="0" />
+                                <!-- </td> -->
+                                <!-- <td> -->
+                                max:<input id="rotarymax" type="number" min="0" max="255" value="100" />
+                                <!-- </td> -->
+                                <!-- <td> -->
+                                step:<input id="rotarystep" type="number" min="0" max="255" value="1" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Display brightness
+                            </th>
+                            <td>
+                                <input id="displaybrightness" type="number" min="0" max="255" value="255" />
+                            </td>
+                        </tr>
+                        <tr id="ledbrightnesstr">
+                            <th>LED brightness
+                            </th>
+                            <td>
+                                <input id="ledbrightness" type="number" min="0" max="255" value="128" />
+                                </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="space"></div>
+
+        <div class="summary">
+            <div class="chapter">
+                <h1>Device connection</h1>
+                <div class="connection">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="button" id="connect" onclick="connectMIDI()" value="connect to device">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" id="set preset" onclick="sendMIDI()" value="set as custom preset">
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="message"></div>
+                    <div><br><br>debug info:</div>
+                    <div id="debug"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    function togleVisable(id) {
+        let x = document.getElementById(id);
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+    function setdhcp() {
+        let e = document.getElementById("dhcp").checked;
+        document.getElementById("localip1").disabled = e;
+        document.getElementById("localip2").disabled = e;
+        document.getElementById("localip3").disabled = e;
+        document.getElementById("localip4").disabled = e;
+
+        document.getElementById("netmask1").disabled = e;
+        document.getElementById("netmask2").disabled = e;
+        document.getElementById("netmask3").disabled = e;
+        document.getElementById("netmask4").disabled = e;
+
+    }
+
+</script>
+<script type="text/javascript" src="main.js"></script>
+
+</html>

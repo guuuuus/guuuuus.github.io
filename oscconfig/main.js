@@ -14,7 +14,7 @@ function onload() {
         alert("MIDI is not enabled in this browser, please use firefox, Chrome, Chromium, Opera or Edge on desktop.");
         return false;
     }
-    console.log(window.location);
+    console.log(window.location.h);
 }
 function rotaryact() {
     return 0;
