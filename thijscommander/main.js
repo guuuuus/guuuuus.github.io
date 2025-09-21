@@ -63,7 +63,7 @@ async function midiReady(midi) {
         console.log(midiOut[index]);
         console.log(midiOut[index].sysexEnabled);
         var devname = midiOut[index].name;
-        if ((midiOut[index].manufacturer == "GUUUUS") || (devname.indexOf("Harmens") >= 0) || devname(evname.indexOf("Thijs") >= 0)) {
+        if ((midiOut[index].manufacturer == "GUUUUS") || (devname.indexOf("Harmens") >= 0) || (devname.indexOf("Thijs") >= 0)) {
             outputdevice = index;
             if (devname.indexOf("Harmens") >= 0)
                 devtype = "harmen";
