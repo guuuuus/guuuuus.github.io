@@ -286,6 +286,6 @@ function ondisconnect(x) {
     console.log(x);
     connected = false;
     x = 0;
-    sleep(200);
-    connectMIDI();
+    // sleep(200);
+    // connectMIDI();
 }
