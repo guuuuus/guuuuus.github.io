@@ -52,7 +52,7 @@ async function midiReady(midi) {
     for (let index = 0; index < midiOut.length; index++) {
         console.log(midiOut[index])
         console.log(midiOut[index].sysexEnabled)
-        if (midiOut[index].manufacturer == "GUUUUS") {
+        if ((midiOut[index].manufacturer == "GUUUUS") || (midiOut[index].name[0-14] == "Harmens Knopje")) {
             outputdevice = index;
             usermesg("found device");
 
