@@ -276,6 +276,9 @@ function arrayoffset(dest, source, offset) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function disconect(x) {
+    ondisconnect(x);
+}
 
 function ondisconnect(x) {
     console.log(x);
