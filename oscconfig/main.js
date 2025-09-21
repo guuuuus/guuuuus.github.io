@@ -15,6 +15,9 @@ function onload() {
         return false;
     }
     console.log(window.location);
+
+
+    setVisible(devtype);
 }
 function rotaryact() {
     return 0;
