@@ -103,7 +103,7 @@
                 <h1 onclick="togleVisable('oscpath')">OSC paths & types</h1>
                 <div id="oscpath" class="chaptercontent">
                     <table>
-                        <tr>
+                        <tr id="rotarytr">
                             <th>Rotary
                             </th>
                             <td>
@@ -263,7 +263,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="rotaryactiontr">
                             <th>Rotary action</th>
                             <td scope="row" colspan="3">
                                 <form id="rotaryaction">
@@ -275,7 +275,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="rotaryactionvalstr">
                             <th>Rotary values</th>
                             <td scope="row" colspan="3">min:<input id="rotarymin" type="number" min="0" max="255"
                                     value="0" />
@@ -294,7 +294,7 @@
                                 <input id="displaybrightness" type="number" min="0" max="255" value="255" />
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="ledbrightnesstr">
                             <th>LED brightness
                             </th>
                             <td>

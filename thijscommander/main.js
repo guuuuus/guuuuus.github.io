@@ -32,11 +32,17 @@ function connectMIDI() {
 }
 
 function setVisible(devicetype) {
-    let visstate = "visible";
-    if (devicetype = "harmen")
-        visstate = "hidden";
-    document.getElementById("button5tr").style.visibility = visstate;
-    document.getElementById("button6tr").style.visibility = visstate;
+    let visstate = "table-row";
+
+    if (devicetype = "harmen") {
+        visstate = "display: none;";
+    }
+    document.getElementById("button5tr").style = visstate;
+    document.getElementById("button6tr").style = visstate;
+    document.getElementById("rotarytr").style = visstate;
+    document.getElementById("rotaryactiontr").style = visstate;
+    document.getElementById("rotaryactionvalstr").style = visstate;
+    document.getElementById("ledbrightnesstr").style = visstate;
 
 }
 
