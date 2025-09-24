@@ -78,6 +78,7 @@ async function midiReady(midi) {
 
     // MIDI devices that you send data to.
     const outputs = midi.outputs.values();
+    let founddevice = 0;
     for (let output = outputs.next(); output && !output.done; output = outputs.next()) {
         midiOut.push(output.value);
     }
@@ -87,6 +88,7 @@ async function midiReady(midi) {
         var devname = midiOut[index].name;
         if ((midiOut[index].manufacturer == "GUUUUS") || (devname.indexOf("Harmens") >= 0) || (devname.indexOf("Thijs") >= 0)) {
             outputdevice = index;
+            founddevice = 1;
             if (devname.indexOf("Harmens") >= 0)
                 devtype = "harmen";
             usermesg("found device");
@@ -96,7 +98,7 @@ async function midiReady(midi) {
         }
 
     }
-    if (!outputdevice) {
+    if (founddevice == 0) {
         console.log("no device found");
         usermesg("no device found");
     } else {
