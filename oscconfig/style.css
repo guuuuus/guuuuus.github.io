@@ -45,6 +45,20 @@ h2 {
     flex-basis: 1;
 }
 
+.footers {
+    width: 60%;
+    min-width: 730px;
+    flex-grow: 19;
+    flex-basis: 1;
+}
+
+.footer {
+    width: 2%;
+    min-width: 200px;
+    border-radius: 5px;
+    background: rgba(199, 199, 199, 0.87);
+}
+
 .chapter {
     width: 100%;
     border-radius: 5px;
@@ -117,18 +131,20 @@ input[type=button] {
     background: #ececec;
     border: 1px solid #000000;
 }
+
 input[type=button]:hover {
     width: 100%;
     background: #888888;
     border: 1px solid #000000;
 }
+
 input[type=button]:focus {
     width: 100%;
     background: #c0c0c0;
     border: 1px solid #000000;
-    
+
 }
 
-input[type=radio]{
+input[type=radio] {
     accent-color: rgb(92, 92, 92);
 }
